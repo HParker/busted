@@ -162,6 +162,22 @@ $ ruby start_finish_trace.rb
 
 **Busted** includes an [example `dtrace` probe](/dtrace/probes/examples/method-cache-clear.d) for use on the command line or an application.  See the [probe](/dtrace/probes/examples/method-cache-clear.d) for usage.
 
+# Rails Usage
+
+In rails you can use the `BustedTracer` middleware to log the method and constant cache invalidations. You can configure BustedTracer using,
+
+```ruby
+config.middleware.insert_after(ActionDispatch::Static, BustedTracer)
+```
+
+in your `config/environment`.
+
+The log messages should look like,
+
+```
+[Cache Invalidations] methods=0 constants=0
+```
+
 ## Installation
 
 ***Requires MRI Ruby 2.1+***
