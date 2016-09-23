@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BustedTracerTest < MiniTest::Unit::TestCase
+class BustedTracerTest < Minitest::Test
   class MockLogger
     def initialize
       @info = []
@@ -28,7 +28,7 @@ class BustedTracerTest < MiniTest::Unit::TestCase
       middleware.call({})
     end
 
-    assert_match /methods=0 constants=0/, log.messages.last
+    assert_match(/methods=0 constants=0/, log.messages.last)
   end
 
   def test_it_logs_method_cache_correctly
@@ -42,7 +42,7 @@ class BustedTracerTest < MiniTest::Unit::TestCase
       middleware.call({})
     end
 
-    assert_match /methods=1 constants=0/, log.messages.last
+    assert_match(/methods=1 constants=0/, log.messages.last)
   end
 
   def test_it_logs_constant_cache_correctly
@@ -56,6 +56,6 @@ class BustedTracerTest < MiniTest::Unit::TestCase
       middleware.call({})
     end
 
-    assert_match /methods=0 constants=1/, log.messages.last
+    assert_match(/methods=0 constants=1/, log.messages.last)
   end
 end

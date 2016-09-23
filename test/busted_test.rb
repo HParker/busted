@@ -283,7 +283,7 @@ class BustedTest < Minitest::Test
       assert_equal 1, report[:invalidations][:method]
       assert_equal 0, report[:invalidations][:constant]
       assert_equal "global", report[:traces][:method][0][:class]
-      assert_match /test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile]
+      assert_match(/test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile])
       assert_equal "#{__LINE__ - 5}", report[:traces][:method][0][:lineno]
     end
 
@@ -294,7 +294,7 @@ class BustedTest < Minitest::Test
       assert_equal 1, report[:invalidations][:method]
       assert_equal 0, report[:invalidations][:constant]
       assert_equal "global", report[:traces][:method][0][:class]
-      assert_match /test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile]
+      assert_match(/test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile])
       assert_equal "#{__LINE__ - 6}", report[:traces][:method][0][:lineno]
     end
   end
