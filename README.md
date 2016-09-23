@@ -6,7 +6,7 @@
 
 - [Basic Usage](#basic-usage) reports cache invalidations
 - [Advanced Usage](#advanced-usage) details exact invalidation locations via [`dtrace`](http://en.wikipedia.org/wiki/DTrace)
-- [Coming Soon](https://github.com/simeonwillbanks/busted/issues/2) a Rails profiler for reporting cache invalidations per request
+- [Rails Usage](#rails-usage) a Rails profiler for reporting cache invalidations per request
 - **Busted** relies upon [RubyVM.stat](http://ruby-doc.org/core-2.1.0/RubyVM.html#method-c-stat) and the [ruby:::method-cache-clear](http://ruby-doc.org/core-2.1.0/doc/dtrace_probes_rdoc.html) `dtrace` probe
 
 ## Basic Usage
@@ -162,7 +162,7 @@ $ ruby start_finish_trace.rb
 
 **Busted** includes an [example `dtrace` probe](/dtrace/probes/examples/method-cache-clear.d) for use on the command line or an application.  See the [probe](/dtrace/probes/examples/method-cache-clear.d) for usage.
 
-# Rails Usage
+## Rails Usage
 
 In rails you can use the `BustedTracer` middleware to log the method and constant cache invalidations. You can configure BustedTracer using,
 
