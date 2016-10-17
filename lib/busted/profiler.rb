@@ -2,7 +2,7 @@ require "busted/counter"
 require "busted/countable"
 require "busted/tracer"
 require "busted/traceable"
-require "busted/middleware/busted_tracer"
+require "busted/middleware"
 
 module Busted
   module Profiler

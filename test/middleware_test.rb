@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BustedTracerTest < MiniTest::Unit::TestCase
+class MiddlewareTest < MiniTest::Unit::TestCase
   class MockLogger
     def initialize
       @info = []
@@ -16,14 +16,14 @@ class BustedTracerTest < MiniTest::Unit::TestCase
 
   def test_returns_result_exactly
     app = proc {|env| [200, {'Content-Type' => 'text/plain'}, ['OK']]}
-    middleware = BustedTracer.new(app)
+    middleware = Busted::Middleware.new(app)
     assert_equal [200, {'Content-Type' => 'text/plain'}, ['OK']], middleware.call({})
   end
 
   def test_it_logs_cache_invalidations
     log = MockLogger.new
     app = proc {|env| [200, {'Content-Type' => 'text/plain'}, ['OK']]}
-    middleware = BustedTracer.new(app)
+    middleware = Busted::Middleware.new(app)
     middleware.stub :logger, log do
       middleware.call({})
     end
@@ -37,7 +37,7 @@ class BustedTracerTest < MiniTest::Unit::TestCase
       Object.class_exec { def margarita; end }
       [200, {'Content-Type' => 'text/plain'}, ['OK']]
     }
-    middleware = BustedTracer.new(app)
+    middleware = Busted::Middleware.new(app)
     middleware.stub :logger, log do
       middleware.call({})
     end
@@ -51,7 +51,7 @@ class BustedTracerTest < MiniTest::Unit::TestCase
       self.class.const_set :"VEGETABLE", "vegetable"
       [200, {'Content-Type' => 'text/plain'}, ['OK']]
     }
-    middleware = BustedTracer.new(app)
+    middleware = Busted::Middleware.new(app)
     middleware.stub :logger, log do
       middleware.call({})
     end
