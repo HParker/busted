@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BustedTest < MiniTest::Unit::TestCase
+class BustedTest < Minitest::Test
   def test_invalid_profiler_exception
     error = assert_raises ArgumentError do
       Busted.run profiler: :pizza
@@ -283,7 +283,7 @@ class BustedTest < MiniTest::Unit::TestCase
       assert_equal 1, report[:invalidations][:method]
       assert_equal 0, report[:invalidations][:constant]
       assert_equal "global", report[:traces][:method][0][:class]
-      assert_match /test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile]
+      assert_match(/test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile])
       assert_equal "#{__LINE__ - 5}", report[:traces][:method][0][:lineno]
     end
 
@@ -294,7 +294,7 @@ class BustedTest < MiniTest::Unit::TestCase
       assert_equal 1, report[:invalidations][:method]
       assert_equal 0, report[:invalidations][:constant]
       assert_equal "global", report[:traces][:method][0][:class]
-      assert_match /test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile]
+      assert_match(/test\/busted_test.rb\z/, report[:traces][:method][0][:sourcefile])
       assert_equal "#{__LINE__ - 6}", report[:traces][:method][0][:lineno]
     end
   end
