@@ -164,10 +164,10 @@ $ ruby start_finish_trace.rb
 
 ## Rails Usage
 
-In rails you can use the `BustedTracer` middleware to log the method and constant cache invalidations. You can configure BustedTracer using,
+In rails you can use the `Busted::Middleware` middleware to log the method and constant cache invalidations. You can configure `Busted::Middleware` using,
 
 ```ruby
-config.middleware.insert_before(0, BustedTracer)
+config.middleware.insert_before(0, Busted::Middleware)
 ```
 
 in your `config/environment`.
