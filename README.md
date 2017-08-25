@@ -167,7 +167,7 @@ $ ruby start_finish_trace.rb
 In rails you can use the `BustedTracer` middleware to log the method and constant cache invalidations. You can configure BustedTracer using,
 
 ```ruby
-config.middleware.insert_after(ActionDispatch::Static, BustedTracer)
+config.middleware.insert_before(0, BustedTracer)
 ```
 
 in your `config/environment`.
